@@ -4,26 +4,56 @@
  */
 package mx.itson.cinepolis.vista;
 
-import java.awt.List;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import mx.itson.cinepolis.controladores.ClienteController;
 import mx.itson.cinepolis.entidades.Cliente;
+
 
 /**
  *
  * @author miria
  */
 public class ClienteView extends javax.swing.JFrame {
+    ClienteController  clienteController = new ClienteController();
+    ArrayList<Cliente> lista;
+    int clienteSeleccionado;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ClienteView.class.getName());
 
-    /**
-     * Creates new form PeliculasView
-     */
     public ClienteView() {
         initComponents();
-    }
+        this.llenarTablaClientes();
+    }    
+    
     public void llenarTablaClientes() {
         
+       lista = clienteController.listar(); 
+      //modelo: crear columnas y filas
+       DefaultTableModel model = new DefaultTableModel(); 
+       model.addColumn("id");   
+       model.addColumn("nombre");
+       model.addColumn("apellido");   
+       model.addColumn("recibir publicidad");
+       model.addColumn("correo");
+       model.addColumn("fecha cumpleaños");
+       model.addColumn("ciudad");
+       model.addColumn("contraseña");
+      //llenar la tabla
+      for(Cliente c :lista ){ 
+       model.addRow( new Object[]{
+           c.getId(),
+           c.getNombre(),
+           c.getApellido(),
+           c.isRecibirPublicidad(),
+           c.getCorreo(),
+           c.getFechaCumpleanos(),
+           c.getCiudad(),
+           c.getContrasenia()
+       }); 
+      } 
+      //agregar modelo a la tabla
+      tblClientes.setModel(model);
     }
 
     /**
@@ -49,6 +79,8 @@ public class ClienteView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(1000, 600));
+
         tblClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -70,20 +102,20 @@ public class ClienteView extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(142, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(118, 118, 118))
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 950, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         btnRegresar.setText("<");
@@ -137,11 +169,11 @@ public class ClienteView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 950, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
         );
 
         pack();

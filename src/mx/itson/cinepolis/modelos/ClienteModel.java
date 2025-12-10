@@ -4,8 +4,6 @@
  */
 package mx.itson.cinepolis.modelos;
 
-import java.lang.System.Logger;
-import java.lang.System.Logger.Level;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -55,7 +53,7 @@ public class ClienteModel {
                 java.time.LocalDate fechaCumpleanos = (fechaSQL != null) ? fechaSQL.toLocalDate() : null;
                 
         Cliente c = new Cliente(
-                        rs.getInt("id_cliente"), // Asegúrate que la columna en BD se llame así
+                        rs.getInt("id_cliente"),
                         rs.getString("nombres"),
                         rs.getString("apellidos"),
                         recibirPublicidad,

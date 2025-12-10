@@ -13,7 +13,7 @@ import mx.itson.cinepolis.modelos.ClienteModel;
  * @author miria
  */
 public class ClienteController {
-    
+    ClienteModel modelo = new ClienteModel();
     public void crear(){}
     
     public void editar(){}
@@ -21,7 +21,7 @@ public class ClienteController {
     public void eliminar(){}
     
     public ArrayList<Cliente> listar() {
-        ClienteModel modelo = new ClienteModel();
+        
         return modelo.listar();
 }
     
