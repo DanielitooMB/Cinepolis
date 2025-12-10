@@ -8,14 +8,14 @@ package mx.itson.cinepolis.vista;
  *
  * @author miria
  */
-public class PeliculasView extends javax.swing.JFrame {
+public class ClienteView extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PeliculasView.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ClienteView.class.getName());
 
     /**
      * Creates new form PeliculasView
      */
-    public PeliculasView() {
+    public ClienteView() {
         initComponents();
     }
 
@@ -56,16 +56,16 @@ public class PeliculasView extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("PELICULAS");
+        jLabel1.setText("CLIENTES");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(129, Short.MAX_VALUE)
+                .addContainerGap(142, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addGap(118, 118, 118))
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -82,6 +82,11 @@ public class PeliculasView extends javax.swing.JFrame {
         btnRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnRegresarMouseClicked(evt);
+            }
+        });
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
             }
         });
         jMenuBar1.add(btnRegresar);
@@ -158,6 +163,10 @@ public class PeliculasView extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnRegresarMouseClicked
 
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -180,7 +189,7 @@ public class PeliculasView extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new PeliculasView().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new ClienteView().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
