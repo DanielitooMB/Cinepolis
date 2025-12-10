@@ -11,8 +11,5 @@ package mx.itson.cinepolis.conexion;
 public class PruebaConexion {
     public static void main(String[] args) {
         ConexionBD conexion = new ConexionBD();
-        
-        // Si imprime "Conexión exitosa", todo está listo.
-        conexion.getConnection();
     }
 }

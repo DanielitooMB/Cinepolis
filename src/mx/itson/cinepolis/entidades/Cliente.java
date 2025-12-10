@@ -12,7 +12,7 @@ import java.time.LocalDate;
  */
 public class Cliente {
     
-    private long id;
+    private int id;
     private String nombre;
     private String apellido;
     private boolean recibirPublicidad;
@@ -24,7 +24,7 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(long id, String nombre, String apellido, boolean recibirPublicidad, String correo, LocalDate fechaCumpleanos, String ciudad, String contrasenia) {
+    public Cliente(int id, String nombre, String apellido, boolean recibirPublicidad, String correo, LocalDate fechaCumpleanos, String ciudad, String contrasenia) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -34,6 +34,7 @@ public class Cliente {
         this.ciudad = ciudad;
         this.contrasenia = contrasenia;
     }
+
 
     @Override
     public String toString() {
@@ -51,11 +52,11 @@ public class Cliente {
         return sb.toString();
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -114,5 +115,5 @@ public class Cliente {
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
-    
+
 }

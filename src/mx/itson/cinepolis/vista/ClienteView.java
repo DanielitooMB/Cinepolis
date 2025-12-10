@@ -4,6 +4,10 @@
  */
 package mx.itson.cinepolis.vista;
 
+import java.awt.List;
+import javax.swing.table.DefaultTableModel;
+import mx.itson.cinepolis.entidades.Cliente;
+
 /**
  *
  * @author miria
@@ -18,6 +22,9 @@ public class ClienteView extends javax.swing.JFrame {
     public ClienteView() {
         initComponents();
     }
+    public void llenarTablaClientes() {
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,7 +37,7 @@ public class ClienteView extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblClientes = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         btnRegresar = new javax.swing.JMenu();
@@ -42,7 +49,7 @@ public class ClienteView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -53,7 +60,7 @@ public class ClienteView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblClientes);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -204,6 +211,6 @@ public class ClienteView extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblClientes;
     // End of variables declaration//GEN-END:variables
 }

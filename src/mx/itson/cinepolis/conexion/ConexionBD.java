@@ -6,28 +6,56 @@ package mx.itson.cinepolis.conexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ConexionBD {
-
-    private static final String URL = "jdbc:mariadb://localhost:3306/cinepolis";
-
-    //"Credenciales" de MariaDB
-    private static final String USER = "root";
-    private static final String PASSWORD = "maria"; 
-
-    public Connection getConnection() {
-        Connection connection = null;
+    
+    String usuario ="root";
+    String clave="maria";
+    String url ="jdbc:mariadb://localhost:3306/cinepolis";
+    Connection con;
+    Statement stmt;
+    ResultSet rs;
+    
+    public ConexionBD() {
         try {
-            // Intento de conexión usando el DriverManager
-            connection = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("Conexión exitosa a la base de datos Cinepolis");
-            
-        } catch (SQLException ex) {
-            // Manejo de errores
-            System.out.println("Error en la conexión: " + ex.getMessage());
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return connection;
+        try {
+            con = DriverManager.getConnection(url,usuario,clave);
+            stmt = con.createStatement(); 
+        
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+    
+    
+    public  int    query(String consulta){
+        try {
+           return stmt.executeUpdate(consulta);
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        return 0;
+        }
+    }
+    
+    public  ResultSet   select(String consulta){
+        try {
+            rs = stmt.executeQuery(consulta);
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return  rs;
+    }
+
 }
