@@ -4,25 +4,27 @@
  */
 package mx.itson.cinepolis.entidades;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author miria
  */
-public class Clientes {
+public class Cliente {
     
-    private int id;
+    private long id;
     private String nombre;
     private String apellido;
     private boolean recibirPublicidad;
     private String correo;
-    private String fechaCumpleanos;
+    private LocalDate fechaCumpleanos;
     private String ciudad;
     private String contrasenia;
 
-    public Clientes() {
+    public Cliente() {
     }
 
-    public Clientes(int id, String nombre, String apellido, boolean recibirPublicidad, String correo, String fechaCumpleanos, String ciudad, String contrasenia) {
+    public Cliente(long id, String nombre, String apellido, boolean recibirPublicidad, String correo, LocalDate fechaCumpleanos, String ciudad, String contrasenia) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -36,7 +38,7 @@ public class Clientes {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Clientes{");
+        sb.append("Cliente{");
         sb.append("id=").append(id);
         sb.append(", nombre=").append(nombre);
         sb.append(", apellido=").append(apellido);
@@ -48,13 +50,12 @@ public class Clientes {
         sb.append('}');
         return sb.toString();
     }
-    
-    
-    public int getId() {
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -90,11 +91,11 @@ public class Clientes {
         this.correo = correo;
     }
 
-    public String getFechaCumpleanos() {
+    public LocalDate getFechaCumpleanos() {
         return fechaCumpleanos;
     }
 
-    public void setFechaCumpleanos(String fechaCumpleanos) {
+    public void setFechaCumpleanos(LocalDate fechaCumpleanos) {
         this.fechaCumpleanos = fechaCumpleanos;
     }
 
