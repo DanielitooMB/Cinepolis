@@ -4,21 +4,29 @@
  */
 package mx.itson.cinepolis.vista;
 
+import mx.itson.cinepolis.controladores.ClienteController;
+import mx.itson.cinepolis.entidades.Cliente;
+
 /**
  *
  * @author miria
  */
 public class ClienteForm extends javax.swing.JFrame {
     
+    ClienteController  clienteController = new ClienteController();
+    Cliente cliente;
+            
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ClienteForm.class.getName());
-
+    
     /**
      * Creates new form PeliculasView
      */
     public ClienteForm() {
         initComponents();
+        
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -197,6 +205,11 @@ public class ClienteForm extends javax.swing.JFrame {
         );
 
         btnRegresar.setText("<");
+        btnRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRegresarMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(btnRegresar);
 
         btnAcciones.setText("Acciónes");
@@ -274,6 +287,17 @@ public class ClienteForm extends javax.swing.JFrame {
     private void tfContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfContraseniaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfContraseniaActionPerformed
+
+    private void btnRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegresarMouseClicked
+        //Crear una nueva instancia de ClienteView
+        ClienteView clienteView = new ClienteView(); 
+    
+        //Mostrar la ventana principal
+        clienteView.setVisible(true);
+
+        //Cerrar la ventana actual
+        this.dispose();
+    }//GEN-LAST:event_btnRegresarMouseClicked
 
     /**
      * @param args the command line arguments

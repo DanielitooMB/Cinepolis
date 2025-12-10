@@ -17,6 +17,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Acci&#xf3;nes"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAccionesActionPerformed"/>
+          </Events>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="btnAgregar">
               <Properties>

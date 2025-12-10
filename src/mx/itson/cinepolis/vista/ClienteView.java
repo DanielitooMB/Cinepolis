@@ -132,6 +132,11 @@ public class ClienteView extends javax.swing.JFrame {
         jMenuBar1.add(btnRegresar);
 
         btnAcciones.setText("Acciónes");
+        btnAcciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAccionesActionPerformed(evt);
+            }
+        });
 
         btnAgregar.setText("Agregar Nueva");
         btnAgregar.setToolTipText("");
@@ -185,7 +190,11 @@ public class ClienteView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVerActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        //este
+        ClienteForm clienteForm = new ClienteForm();
+        clienteForm.setVisible(true);
+
+        llenarTablaClientes();
+        this.dispose();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
@@ -206,6 +215,10 @@ public class ClienteView extends javax.swing.JFrame {
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
 
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void btnAccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccionesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAccionesActionPerformed
 
     /**
      * @param args the command line arguments
