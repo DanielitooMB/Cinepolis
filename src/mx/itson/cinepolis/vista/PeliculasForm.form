@@ -72,18 +72,21 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jComboBox1" min="-2" pref="148" max="-2" attributes="0"/>
-                      <Component id="jTextField1" max="32767" attributes="0"/>
-                      <Component id="jTextField2" alignment="0" pref="446" max="32767" attributes="0"/>
-                      <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="ftDuracion" pref="446" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jComboBox1" min="-2" pref="148" max="-2" attributes="0"/>
+                          <Component id="tfTitulo" max="32767" attributes="0"/>
+                          <Component id="jTextField2" alignment="0" pref="446" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace pref="260" max="32767" attributes="0"/>
               </Group>
@@ -95,14 +98,16 @@
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTextField1" min="-2" pref="38" max="-2" attributes="0"/>
+                  <Component id="tfTitulo" min="-2" pref="38" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel5" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="103" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel6" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="ftDuracion" min="-2" pref="44" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel7" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jTextField2" min="-2" pref="38" max="-2" attributes="0"/>
@@ -110,7 +115,7 @@
                   <Component id="jLabel4" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jComboBox1" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace pref="20" max="32767" attributes="0"/>
+                  <EmptySpace pref="29" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -124,14 +129,14 @@
             <Property name="text" type="java.lang.String" value="T&#xed;tulo:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="tfTitulo">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfTituloActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField2">
@@ -159,7 +164,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="jTextArea1">
+            <Component class="javax.swing.JTextArea" name="taSinopsis">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
@@ -180,7 +185,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Duraci&#xf3;n:"/>
+            <Property name="text" type="java.lang.String" value="Duraci&#xf3;n H:M:S :"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBox1">
@@ -206,6 +211,14 @@
               <Font name="Segoe UI" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Pa&#xed;s:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="ftDuracion">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="#:##:##"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>

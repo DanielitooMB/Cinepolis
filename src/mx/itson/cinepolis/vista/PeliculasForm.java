@@ -30,15 +30,16 @@ public class PeliculasForm extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        tfTitulo = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        taSinopsis = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
+        ftDuracion = new javax.swing.JFormattedTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         btnRegresar = new javax.swing.JMenu();
         btnAcciones = new javax.swing.JMenu();
@@ -50,10 +51,10 @@ public class PeliculasForm extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Título:");
 
-        jTextField1.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        tfTitulo.setForeground(new java.awt.Color(51, 51, 51));
+        tfTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                tfTituloActionPerformed(evt);
             }
         });
 
@@ -67,20 +68,23 @@ public class PeliculasForm extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("Clasificación:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        taSinopsis.setColumns(20);
+        taSinopsis.setRows(5);
+        jScrollPane1.setViewportView(taSinopsis);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("Sinopsis:");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setText("Duración:");
+        jLabel6.setText("Duración H:M:S :");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AA", "A", "B", "B15", "C", "D" }));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setText("País:");
+
+        ftDuracion.setText("#:##:##");
+        ftDuracion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -88,16 +92,18 @@ public class PeliculasForm extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(ftDuracion, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tfTitulo)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(260, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -106,14 +112,16 @@ public class PeliculasForm extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ftDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -121,7 +129,7 @@ public class PeliculasForm extends javax.swing.JFrame {
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         btnRegresar.setText("<");
@@ -172,9 +180,9 @@ public class PeliculasForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGuardarMouseClicked
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void tfTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTituloActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_tfTituloActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
@@ -210,6 +218,7 @@ public class PeliculasForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnCancelar;
     private javax.swing.JMenuItem btnGuardar;
     private javax.swing.JMenu btnRegresar;
+    private javax.swing.JFormattedTextField ftDuracion;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -219,8 +228,8 @@ public class PeliculasForm extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextArea taSinopsis;
+    private javax.swing.JTextField tfTitulo;
     // End of variables declaration//GEN-END:variables
 }

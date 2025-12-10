@@ -66,11 +66,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
 
         btnSalir.setText("Salir");
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalirMouseClicked(evt);
+            }
+        });
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(btnSalir);
 
         btnCatalogos.setText("Catálogos");
 
         btnGestionarPeliculas.setText("Gestionar Películas");
+        btnGestionarPeliculas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGestionarPeliculasMouseClicked(evt);
+            }
+        });
         btnGestionarPeliculas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGestionarPeliculasActionPerformed(evt);
@@ -111,12 +126,35 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGestionarPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarPeliculasActionPerformed
-        // TODO add your handling code here:
+        
+    PeliculasView view = new PeliculasView();
+    
+    //Mostrar la ventana nueva
+    view.setVisible(true);
+    
+    //Ocultar el menú principal
+    this.setVisible(false);
+        
     }//GEN-LAST:event_btnGestionarPeliculasActionPerformed
 
     private void btnGestionarSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarSalasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGestionarSalasActionPerformed
+
+    private void btnGestionarPeliculasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarPeliculasMouseClicked
+        
+        
+        
+    }//GEN-LAST:event_btnGestionarPeliculasMouseClicked
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
+        //Cerrar todo
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirMouseClicked
 
     /**
      * @param args the command line arguments

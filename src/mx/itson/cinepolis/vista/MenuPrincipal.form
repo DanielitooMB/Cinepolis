@@ -17,6 +17,10 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Salir"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSalirMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalirActionPerformed"/>
+          </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="btnCatalogos">
           <Properties>
@@ -28,6 +32,7 @@
                 <Property name="text" type="java.lang.String" value="Gestionar Pel&#xed;culas"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnGestionarPeliculasMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGestionarPeliculasActionPerformed"/>
               </Events>
             </MenuItem>

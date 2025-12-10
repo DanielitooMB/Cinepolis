@@ -79,6 +79,11 @@ public class PeliculasView extends javax.swing.JFrame {
         );
 
         btnRegresar.setText("<");
+        btnRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRegresarMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(btnRegresar);
 
         btnAcciones.setText("Acciónes");
@@ -134,12 +139,23 @@ public class PeliculasView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVerActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarMouseClicked
+
+    private void btnRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegresarMouseClicked
+        //Crear una nueva instancia de Menu
+        MenuPrincipal menuPrincipal = new MenuPrincipal(); 
+    
+        //Mostrar la ventana principal
+        menuPrincipal.setVisible(true);
+
+        //Cerrar la ventana actual
+        this.dispose();
+    }//GEN-LAST:event_btnRegresarMouseClicked
 
     /**
      * @param args the command line arguments
