@@ -34,9 +34,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         btnSalir = new javax.swing.JMenu();
         btnCatalogos = new javax.swing.JMenu();
+        btnGestionarClientes = new javax.swing.JMenuItem();
         btnGestionarPeliculas = new javax.swing.JMenuItem();
         btnGestionarSalas = new javax.swing.JMenuItem();
-        btnGestionarClientes = new javax.swing.JMenuItem();
         btnGestionarCartelera = new javax.swing.JMenuItem();
 
         jMenu3.setText("jMenu3");
@@ -57,7 +57,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,6 +82,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         btnCatalogos.setText("Catálogos");
 
+        btnGestionarClientes.setText("Gestionar Clientes");
+        btnGestionarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGestionarClientesActionPerformed(evt);
+            }
+        });
+        btnCatalogos.add(btnGestionarClientes);
+
         btnGestionarPeliculas.setText("Gestionar Películas");
         btnGestionarPeliculas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -103,15 +111,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         btnCatalogos.add(btnGestionarSalas);
 
-        btnGestionarClientes.setText("Gestionar Clientes");
-        btnGestionarClientes.addActionListener(new java.awt.event.ActionListener() {
+        btnGestionarCartelera.setText("Gestionar Funciones");
+        btnGestionarCartelera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGestionarClientesActionPerformed(evt);
+                btnGestionarCarteleraActionPerformed(evt);
             }
         });
-        btnCatalogos.add(btnGestionarClientes);
-
-        btnGestionarCartelera.setText("Gestionar Funciones");
         btnCatalogos.add(btnGestionarCartelera);
 
         jMenuBar1.add(btnCatalogos);
@@ -148,7 +153,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestionarPeliculasActionPerformed
 
     private void btnGestionarSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarSalasActionPerformed
-        // TODO add your handling code here:
+        
+        SalasView view = new SalasView();
+        
+        view.setVisible(true);
+        
+        this.setVisible(false);
     }//GEN-LAST:event_btnGestionarSalasActionPerformed
 
     private void btnGestionarPeliculasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarPeliculasMouseClicked
@@ -175,6 +185,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
     //Ocultar el menú principal
     this.setVisible(false);
     }//GEN-LAST:event_btnGestionarClientesActionPerformed
+
+    private void btnGestionarCarteleraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarCarteleraActionPerformed
+        FuncionesView view = new FuncionesView();
+        
+        view.setVisible(true);
+        
+        this.setVisible(false);
+    }//GEN-LAST:event_btnGestionarCarteleraActionPerformed
 
     /**
      * @param args the command line arguments

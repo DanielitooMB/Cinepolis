@@ -8,14 +8,14 @@ package mx.itson.cinepolis.vista;
  *
  * @author miria
  */
-public class ClienteView extends javax.swing.JFrame {
+public class SalasView extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ClienteView.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(SalasView.class.getName());
 
     /**
      * Creates new form PeliculasView
      */
-    public ClienteView() {
+    public SalasView() {
         initComponents();
     }
 
@@ -57,7 +57,7 @@ public class ClienteView extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("CLIENTES");
+        jLabel1.setText("SALA");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -190,7 +190,7 @@ public class ClienteView extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new ClienteView().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new SalasView().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
