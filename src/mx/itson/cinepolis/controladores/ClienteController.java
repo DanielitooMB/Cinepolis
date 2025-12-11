@@ -13,15 +13,22 @@ import mx.itson.cinepolis.modelos.ClienteModel;
  * @author miria
  */
 public class ClienteController {
-    ClienteModel modelo = new ClienteModel();
-    public void crear(){}
     
-    public void editar(){}
+    private ClienteModel modelo = new ClienteModel();
     
-    public void eliminar(){}
+    public boolean crear(Cliente cliente) {
+        return modelo.crear(cliente);
+    }
+    
+    public boolean editar(Cliente cliente){
+        return modelo.editar(cliente);
+    }    
+    
+    public boolean eliminar(Cliente cliente){
+        return modelo.eliminar(cliente);
+    }
     
     public ArrayList<Cliente> listar() {
-        
         return modelo.listar();
 }
     

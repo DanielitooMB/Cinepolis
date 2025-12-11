@@ -12,7 +12,6 @@ import java.time.LocalDate;
  */
 public class Cliente {
     
-    private long id;
     private String nombre;
     private String apellido;
     private boolean recibirPublicidad;
@@ -22,10 +21,19 @@ public class Cliente {
     private String contrasenia;
 
     public Cliente() {
+        
     }
 
-    public Cliente(long id, String nombre, String apellido, boolean recibirPublicidad, String correo, LocalDate fechaCumpleanos, String ciudad, String contrasenia) {
-        this.id = id;
+    public Cliente(String nombre1, String apellido1, boolean recibePublicidad, String correo1, String fechaCumple, String ciudad1, String contrasenia1) {
+    }
+
+    public Cliente(String nombre1, String telefono, String correo1, int nivel, String ciudad1, int edad) {
+    }
+
+    public Cliente(int par, String nombre1, String apellido1, boolean publicidad, String correo1, LocalDate fechaNacimiento, String ciudad1, String contrasenia1) {
+    }
+
+    public Cliente(String nombre, String apellido, boolean recibirPublicidad, String correo, LocalDate fechaCumpleanos, String ciudad, String contrasenia) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.recibirPublicidad = recibirPublicidad;
@@ -39,8 +47,7 @@ public class Cliente {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Cliente{");
-        sb.append("id=").append(id);
-        sb.append(", nombre=").append(nombre);
+        sb.append("nombre=").append(nombre);
         sb.append(", apellido=").append(apellido);
         sb.append(", recibirPublicidad=").append(recibirPublicidad);
         sb.append(", correo=").append(correo);
@@ -49,14 +56,6 @@ public class Cliente {
         sb.append(", contrasenia=").append(contrasenia);
         sb.append('}');
         return sb.toString();
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getNombre() {

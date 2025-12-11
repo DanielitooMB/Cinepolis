@@ -15,45 +15,39 @@ import mx.itson.cinepolis.entidades.Cliente;
  * @author miria
  */
 public class ClienteView extends javax.swing.JFrame {
-    ClienteController  clienteController = new ClienteController();
-    ArrayList<Cliente> lista;
-    int clienteSeleccionado;
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ClienteView.class.getName());
+    private ClienteController clienteController = new ClienteController();
+    private ArrayList<Cliente> lista = new ArrayList<>();
 
     public ClienteView() {
         initComponents();
-        this.llenarTablaClientes();
-    }    
+        llenarTablaClientes();
+    }  
     
     public void llenarTablaClientes() {
         
-       lista = clienteController.listar(); 
-      //modelo: crear columnas y filas
-       DefaultTableModel model = new DefaultTableModel(); 
-       model.addColumn("id");   
-       model.addColumn("nombre");
-       model.addColumn("apellido");   
-       model.addColumn("recibir publicidad");
-       model.addColumn("correo");
-       model.addColumn("fecha cumpleaños");
-       model.addColumn("ciudad");
-       model.addColumn("contraseña");
-      //llenar la tabla
-      for(Cliente c :lista ){ 
-       model.addRow( new Object[]{
-           c.getId(),
-           c.getNombre(),
-           c.getApellido(),
-           c.isRecibirPublicidad(),
-           c.getCorreo(),
-           c.getFechaCumpleanos(),
-           c.getCiudad(),
-           c.getContrasenia()
-       }); 
-      } 
-      //agregar modelo a la tabla
-      tblClientes.setModel(model);
+      lista = clienteController.listar(); 
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("nombre");
+        model.addColumn("apellido");   
+        model.addColumn("recibir publicidad");
+        model.addColumn("correo");
+        model.addColumn("fecha cumpleaños");
+        model.addColumn("ciudad");
+        model.addColumn("contraseña");
+        // Agregar filas
+        for(Cliente c : lista) { 
+            model.addRow(new Object[]{
+                c.getNombre(),
+                c.getApellido(),
+                c.isRecibirPublicidad(),
+                c.getCorreo(),
+                c.getFechaCumpleanos(),
+                c.getCiudad(),
+                c.getContrasenia()
+            }); 
+        } 
+        tblClientes.setModel(model);
     }
 
     /**
@@ -186,15 +180,21 @@ public class ClienteView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerActionPerformed
-        // TODO add your handling code here:
+        int i = tblClientes.getSelectedRow();
+        if(i != -1){
+            Cliente c = lista.get(i);
+            // Abrir formulario con los datos del cliente seleccionado (modo vista/edición)
+            ClienteForm clienteForm = new ClienteForm(this, true, c);
+            clienteForm.setVisible(true);
+        }
     }//GEN-LAST:event_btnVerActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        ClienteForm clienteForm = new ClienteForm();
+        // Abrir formulario como diálogo modal (sin cerrar la ventana actual)
+        ClienteForm clienteForm = new ClienteForm(this, true, null);
         clienteForm.setVisible(true);
-
-        llenarTablaClientes();
-        this.dispose();
+        // Al cerrar el formulario, refrescar la tabla
+        this.llenarTablaClientes();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
@@ -237,7 +237,7 @@ public class ClienteView extends javax.swing.JFrame {
                 }
             }
         } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
+            
         }
         //</editor-fold>
 

@@ -22,6 +22,7 @@ public class ConexionBD {
     ResultSet rs;
     
     public ConexionBD() {
+        
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException ex) {

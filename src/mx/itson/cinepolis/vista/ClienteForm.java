@@ -4,6 +4,10 @@
  */
 package mx.itson.cinepolis.vista;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
+import mx.itson.cinepolis.conexion.ConexionBD;
 import mx.itson.cinepolis.controladores.ClienteController;
 import mx.itson.cinepolis.entidades.Cliente;
 
@@ -13,9 +17,10 @@ import mx.itson.cinepolis.entidades.Cliente;
  */
 public class ClienteForm extends javax.swing.JFrame {
     
-    ClienteController  clienteController = new ClienteController();
-    Cliente cliente;
-            
+    private ClienteController clienteController = new ClienteController();
+    private Cliente cliente;
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ClienteForm.class.getName());
     
     /**
@@ -25,8 +30,22 @@ public class ClienteForm extends javax.swing.JFrame {
         initComponents();
         
     }
-    
-    
+
+    public ClienteForm(java.awt.Frame parent, boolean modal, Cliente cliente) {
+     
+        initComponents();
+        this.cliente = cliente;
+        // Si se pasó un cliente existente, cargar sus datos en el formulario
+        if(this.cliente != null){
+            tfNombre.setText(cliente.getNombre());
+            tfApellido.setText(cliente.getApellido());
+            cbRecibirPublicidad.setSelected(cliente.isRecibirPublicidad());
+            tfCorreo.setText(cliente.getCorreo());
+            tfCiudad.setText(cliente.getCiudad());
+            tfContrasenia.setText(cliente.getContrasenia());
+            ftFechaCumple.setText(cliente.getFechaCumpleanos().format(FORMATTER));
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,8 +56,6 @@ public class ClienteForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        tfId = new javax.swing.JTextField();
         tfNombre = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -60,16 +77,6 @@ public class ClienteForm extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setText("ID:");
-
-        tfId.setForeground(new java.awt.Color(51, 51, 51));
-        tfId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfIdActionPerformed(evt);
-            }
-        });
 
         tfNombre.setForeground(new java.awt.Color(51, 51, 51));
         tfNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -148,8 +155,6 @@ public class ClienteForm extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(ftFechaCumple)
                         .addComponent(cbRecibirPublicidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(tfId, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(tfNombre, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(tfApellido, javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,11 +174,7 @@ public class ClienteForm extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -254,17 +255,59 @@ public class ClienteForm extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         
+      // Leer datos del formulario
+        String nombre = tfNombre.getText();
+        String apellido = tfApellido.getText();
+        boolean recibePublicidad = cbRecibirPublicidad.isSelected();
+        String correo = tfCorreo.getText();
+        String fechaStr = ftFechaCumple.getText();
+        String ciudad = tfCiudad.getText();
+        String contrasenia = tfContrasenia.getText();
         
+        // Parsear fecha a LocalDate
+        LocalDate fechaCumpleanos = LocalDate.parse(fechaStr, FORMATTER);
         
+        if (this.cliente == null) {
+            // Modo CREAR
+            Cliente nuevo = new Cliente(
+                nombre,
+                apellido,
+                recibePublicidad,
+                correo,
+                fechaCumpleanos,
+                ciudad,
+                contrasenia
+            );
+            boolean ok = clienteController.crear(nuevo);
+            if(ok){
+                JOptionPane.showMessageDialog(this, "Cliente creado correctamente.");
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al crear cliente.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } 
+        else {
+            // Modo EDITAR: actualizar campos del objeto existente
+            this.cliente.setRecibirPublicidad(recibePublicidad);
+            this.cliente.setCorreo(correo);
+            this.cliente.setFechaCumpleanos(fechaCumpleanos);
+            this.cliente.setCiudad(ciudad);
+            this.cliente.setContrasenia(contrasenia);
+            boolean ok = clienteController.editar(this.cliente);
+            if(ok){
+                JOptionPane.showMessageDialog(this, "Cliente editado correctamente.");
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al editar cliente.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+   
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnGuardarMouseClicked
 
-    private void tfIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfIdActionPerformed
+        
+    }//GEN-LAST:event_btnGuardarMouseClicked
 
     private void tfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreActionPerformed
         // TODO add your handling code here:
@@ -338,7 +381,6 @@ public class ClienteForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
@@ -347,7 +389,7 @@ public class ClienteForm extends javax.swing.JFrame {
     private javax.swing.JTextField tfCiudad;
     private javax.swing.JTextField tfContrasenia;
     private javax.swing.JTextField tfCorreo;
-    private javax.swing.JTextField tfId;
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
+
 }
