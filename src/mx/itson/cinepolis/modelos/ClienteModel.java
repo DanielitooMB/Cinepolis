@@ -53,7 +53,7 @@ public class ClienteModel {
                 java.time.LocalDate fechaCumpleanos = (fechaSQL != null) ? fechaSQL.toLocalDate() : null;
                 
         Cliente c = new Cliente(
-                        rs.getInt("id_cliente"),
+                        rs.getLong("id_cliente"),
                         rs.getString("nombres"),
                         rs.getString("apellidos"),
                         recibirPublicidad,
